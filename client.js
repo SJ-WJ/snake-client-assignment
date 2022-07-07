@@ -12,20 +12,21 @@ const connect = function () {
 
   // Establishing a connection to the server
   conn.on("connect", () => {
-    console.log("Champ is here!") // code that does something when the connection is first established
-  });
+    // Send message upon connecting
+    console.log("Champ is here!")
 
+    // Sending a name
+    conn.write("Name: SWJ");
+
+    // Moving up
+    conn.write("Move: up");
+
+  });
+ 
   // Accepting a message from the server
   conn.on("data", (data) => {
     console.log("Server says", data)
   });
-
-  // Sending a name
-  conn.on("connect", () => {
-    conn.write("Name: SWJ");
-  })
-
-
 
   return conn;
 };
